@@ -1,9 +1,116 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "invoice": [
+    {
+      "id": 1,
+      "invoiceNumber": 1001,
+      "description": "Invoice for services rendered",
+      "customerName": "ABC Company",
+      "billingAddress": "123 Main St, City, Country",
+      "shippingAddress": "123 Main St, City, Country",
+      "invoiceDate": "2023-08-05T00:00:00.000Z",
+      "dueDate": "2023-08-15T00:00:00.000Z",
+      "invoiceItems": [
+        {
+          "invoiceItemId": 101,
+          "invoiceId": 1,
+          "id": 1,
+          "name": "Service A",
+          "description": "Labor service",
+          "type": "Labor",
+          "quantity": 5,
+          "rate": 50
+        },
+        {
+          "invoiceItemId": 102,
+          "invoiceId": 1,
+          "id": 2,
+          "name": "Material B",
+          "description": "Material product",
+          "type": "Material",
+          "quantity": 10,
+          "rate": 20
+        }
+      ],
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "invoiceNumber": 1002,
+      "description": "Invoice for products purchased",
+      "customerName": "XYZ Corp",
+      "billingAddress": "456 Elm St, City, Country",
+      "shippingAddress": "456 Elm St, City, Country",
+      "invoiceDate": "2023-08-05T00:00:00.000Z",
+      "dueDate": "2023-08-20T00:00:00.000Z",
+      "invoiceItems": [
+        {
+          "invoiceItemId": 103,
+          "invoiceId": 2,
+          "id": 3,
+          "name": "Product C",
+          "description": "Material product",
+          "type": "Material",
+          "quantity": 8,
+          "rate": 25
+        }
+      ],
+      "status": "Paid"
+    },
+    {
+      "id": 3,
+      "invoiceNumber": 1003,
+      "description": "Invoice for completed project",
+      "customerName": "123 Corp",
+      "billingAddress": "789 Oak St, City, Country",
+      "shippingAddress": "789 Oak St, City, Country",
+      "invoiceDate": "2023-08-06T00:00:00.000Z",
+      "dueDate": "2023-08-25T00:00:00.000Z",
+      "invoiceItems": [
+        {
+          "invoiceItemId": 104,
+          "invoiceId": 3,
+          "id": 4,
+          "name": "Service D",
+          "description": "Labor service",
+          "type": "Labor",
+          "quantity": 12,
+          "rate": 60
+        },
+        {
+          "invoiceItemId": 105,
+          "invoiceId": 3,
+          "id": 5,
+          "name": "Material E",
+          "description": "Material product",
+          "type": "Material",
+          "quantity": 20,
+          "rate": 30
+        }
+      ],
+      "status": "Pending"
+    },
+    {
+      "id": 4,
+      "invoiceNumber": 1004,
+      "description": "Invoice for consulting services",
+      "customerName": "DEF Solutions",
+      "billingAddress": "987 Maple St, City, Country",
+      "shippingAddress": "987 Maple St, City, Country",
+      "invoiceDate": "2023-08-10T00:00:00.000Z",
+      "dueDate": "2023-08-30T00:00:00.000Z",
+      "invoiceItems": [
+        {
+          "invoiceItemId": 106,
+          "invoiceId": 4,
+          "id": 6,
+          "name": "Service F",
+          "description": "Labor service",
+          "type": "Labor",
+          "quantity": 15,
+          "rate": 55
+        }
+      ],
+      "status": "Draft"
+    }
+  ]
+}

@@ -1,18 +1,19 @@
-import { useState } from 'react';
-const sampleData = [
-    { id: 1, name: 'John Doe', age: 30, email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', age: 25, email: 'jane@example.com' },
-    // Add more data as needed
-     
-  ];
-  
+import { Typography } from '@mui/material';
+import InvoiceTable from './InvoiceTable';
+import InvoiceControlBar from './InvoiceControlBar';
+
 
 
 function Invoice() {
 
     return (
         <>
-            <p>invoice page</p>
+            <Typography variant="h1" gutterBottom>
+                Invoice
+            </Typography>
+            <InvoiceControlBar></InvoiceControlBar>
+            <InvoiceTable />
+
         </>
     )
 }

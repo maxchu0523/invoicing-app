@@ -1,19 +1,22 @@
 import axios from "axios";
+import { Invoice } from "./components/Invoice/IInvoice";
 
-const apiKey = "pk_live_e1d4af8e97c7515606540d088dd33b84";
+const domain = "http://localhost:3000/"
 
 
-export async function getNonProfits(causes : string) {
-    return axios.get("https://partners.every.org/v0.2/browse/" + causes + "?apiKey=" + apiKey).then((response) => {
-        return (response.data.nonprofits);
+export async function getInvoices() {
+    return axios.get(domain + "invoice").then((response) => {
+        let rew: Invoice[] = response.data;
+        return (rew);
     });
 
-    
+
 }
 
 
-export async function getNonProfit(ein: string) {
-    return axios.get("https://partners.every.org/v0.2/nonprofit/" + ein + "?apiKey=" + apiKey).then((response) => {
-        return (response.data.data);
+export async function postInvoice(invoice: Invoice) {
+    return axios.post(domain + "invoice", invoice).then((response) => {
+        let rew: Invoice[] = response.data;
+        return (rew);
     });
 }
