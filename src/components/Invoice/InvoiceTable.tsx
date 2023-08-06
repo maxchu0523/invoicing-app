@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 import { Invoice } from './IInvoice';
 import InvoiceItemTable from './InvoiceItemTable';
 import { getInvoiceAmount } from './InvoiceService';
+import InvoiceEmail from './InvoiceEmail';
 
 
 function Row(props: { invoice: Invoice }) {
@@ -45,6 +46,7 @@ function Row(props: { invoice: Invoice }) {
                 <TableCell align="left">{invoice.dueDate.toString()}</TableCell>
                 <TableCell align="left">{invoice.status}</TableCell>
                 <TableCell align="right">{getInvoiceAmount(invoice)}</TableCell>
+                <TableCell align="center"><InvoiceEmail invoice={invoice}></InvoiceEmail></TableCell>
             </TableRow>
             <TableRow>
                 {/* Invoice Item Collapse */}
@@ -79,7 +81,6 @@ function InvoiceTable() {
 
     useEffect(() => {
         getInvoices().then((res) => {
-            debugger;
             return setInvoices(res);
         })
     }, []);
@@ -101,6 +102,7 @@ function InvoiceTable() {
                         <StyledTableCell align="left">Due Date</StyledTableCell>
                         <StyledTableCell align="left">Status</StyledTableCell>
                         <StyledTableCell align="right">Total Amount</StyledTableCell>
+                        <StyledTableCell align="center">Action</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 {/* Table Row */}

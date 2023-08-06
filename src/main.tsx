@@ -7,12 +7,12 @@ import Invoice from './components/Invoice/Invoice.tsx';
 import InvoiceDetail from './components/Invoice/InvoiceDetail.tsx';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import InvoiceEmail from './components/Invoice/InvoiceEmail.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <App></App>,
-    element: <Invoice></Invoice>,
+    element: <App></App>,
   },
   {
     path: "/invoice",
@@ -24,7 +24,10 @@ const router = createBrowserRouter([
     children: [
       { path: "/invoice/detail/:id", element: <InvoiceDetail></InvoiceDetail> },
     ]
-
+  },
+  {
+    path: "/invoice/email/:id",
+    element: <InvoiceEmail></InvoiceEmail>,
   },
 ]);
 

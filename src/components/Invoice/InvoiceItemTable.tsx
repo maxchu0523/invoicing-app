@@ -128,7 +128,7 @@ function InvoiceItemTable(props: InvoiceItemTableProps) {
                                 <StyledTableCell align="right">Rate / Cost ($)</StyledTableCell>
                                 <StyledTableCell align="right">Amount</StyledTableCell>
                                 {
-                                    props.setInvoiceItems !== undefined ? <StyledTableCell align="right">Action</StyledTableCell> : <></>
+                                    props.setInvoiceItems !== undefined ? <StyledTableCell align="center">Action</StyledTableCell> : <></>
                                 }
 
 
@@ -144,7 +144,7 @@ function InvoiceItemTable(props: InvoiceItemTableProps) {
                                     <TableCell align="right">{invoiceItem.quantity * invoiceItem.rate}</TableCell>
                                     {
                                         props.setInvoiceItems !== undefined ?
-                                            <TableCell align="right">
+                                            <TableCell align="center">
                                                 <Button variant="contained" color="primary" onClick={() => {
                                                     deleteInvoiceItem(invoiceItem.id);
                                                 }}>

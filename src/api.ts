@@ -10,6 +10,14 @@ export async function getInvoices() {
         return (rew);
     });
 
+}
+
+
+export async function getInvoice(invoiceId: number | string) {
+    return axios.get(domain + "invoice/" + invoiceId).then((response) => {
+        let rew: Invoice = response.data;
+        return (rew);
+    });
 
 }
 
