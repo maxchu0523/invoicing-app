@@ -1,9 +1,7 @@
-import { Button } from "@mui/material"
-import { Link } from "react-router-dom"
-
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function App() {
-
   return (
     <>
       <Link to="invoice" relative="path">
@@ -12,7 +10,7 @@ function App() {
         </Button>
       </Link>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
