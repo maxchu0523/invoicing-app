@@ -11,12 +11,12 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { styled } from '@mui/material/styles';
-import { getInvoices } from '../../api';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { Invoice, InvoiceStatus } from '../../interface/IInvoice';
 import InvoiceItemTable from './InvoiceItemTable';
 import { getInvoiceAmount } from '../../services/InvoiceService';
 import InvoiceEmail from './InvoiceEmail';
+import { Typography } from '@mui/material';
 
 
 function Row(props: { invoice: Invoice }) {
@@ -27,7 +27,7 @@ function Row(props: { invoice: Invoice }) {
     function statusColor(status: string) {
         switch (status) {
             case InvoiceStatus.PAID:
-                return '#00e676'; 
+                return '#00e676';
             case InvoiceStatus.SENT:
                 return '#ffee33';
             case InvoiceStatus.DRAFT:
@@ -40,7 +40,7 @@ function Row(props: { invoice: Invoice }) {
                 return '#ff3d00';
         }
     }
-    
+
 
     return (
         <React.Fragment>
@@ -63,7 +63,7 @@ function Row(props: { invoice: Invoice }) {
                 <TableCell align="left">{invoice.billingAddress}</TableCell>
                 <TableCell align="left">{new Date(invoice.invoiceDate).toDateString()}</TableCell>
                 <TableCell align="left">{new Date(invoice.dueDate).toDateString()}</TableCell>
-                <TableCell align="left" style={{backgroundColor:statusColor(invoice.status), color: 'white',}} >{invoice.status}</TableCell>
+                <TableCell align="left" style={{ backgroundColor: statusColor(invoice.status), color: 'white', }} >{invoice.status}</TableCell>
                 <TableCell align="right">{getInvoiceAmount(invoice)}</TableCell>
                 <TableCell align="center"><InvoiceEmail invoice={invoice}></InvoiceEmail></TableCell>
             </TableRow>
@@ -91,47 +91,48 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }));
 
+interface InvoiceTableProps {
+    invoices: Invoice[];
+
+}
 
 
-
-function InvoiceTable() {
-    const [invoices, setInvoices] = useState<Invoice[]>([]);
-
-
-    useEffect(() => {
-        getInvoices().then((res) => {
-            return setInvoices(res);
-        })
-    }, []);
-
+function InvoiceTable(props: InvoiceTableProps) {
+    const invoices = props.invoices;
 
     return (
-        <TableContainer component={Paper}>
-            <Table aria-label="invoice">
-                {/* Table Header */}
-                <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Invoice Item</StyledTableCell>
-                        <StyledTableCell>Invoice #</StyledTableCell>
-                        <StyledTableCell align="left">Invoice</StyledTableCell>
-                        <StyledTableCell align="left">Customer</StyledTableCell>
-                        <StyledTableCell align="left">Shipping Address</StyledTableCell>
-                        <StyledTableCell align="left">Billing Address</StyledTableCell>
-                        <StyledTableCell align="left">Invoice Date</StyledTableCell>
-                        <StyledTableCell align="left">Due Date</StyledTableCell>
-                        <StyledTableCell align="left">Status</StyledTableCell>
-                        <StyledTableCell align="right">Total Amount</StyledTableCell>
-                        <StyledTableCell align="center">Action</StyledTableCell>
-                    </TableRow>
-                </TableHead>
-                {/* Table Row */}
-                <TableBody>
-                    {invoices.map((invoice) => (
-                        <Row key={invoice.id} invoice={invoice} />
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <>
+            <Typography variant="h6" gutterBottom component="div">
+                Invoice Table
+            </Typography>
+            <TableContainer component={Paper}>
+                <Table aria-label="invoice">
+                    {/* Table Header */}
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Invoice Item</StyledTableCell>
+                            <StyledTableCell>Invoice #</StyledTableCell>
+                            <StyledTableCell align="left">Invoice</StyledTableCell>
+                            <StyledTableCell align="left">Customer</StyledTableCell>
+                            <StyledTableCell align="left">Shipping Address</StyledTableCell>
+                            <StyledTableCell align="left">Billing Address</StyledTableCell>
+                            <StyledTableCell align="left">Invoice Date</StyledTableCell>
+                            <StyledTableCell align="left">Due Date</StyledTableCell>
+                            <StyledTableCell align="left">Status</StyledTableCell>
+                            <StyledTableCell align="right">Total Amount</StyledTableCell>
+                            <StyledTableCell align="center">Action</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    {/* Table Row */}
+                    <TableBody>
+                        {invoices.map((invoice) => (
+                            <Row key={invoice.id} invoice={invoice} />
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
+
     );
 }
 

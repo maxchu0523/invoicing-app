@@ -14,7 +14,7 @@
           "invoiceId": "1",
           "id": "101",
           "description": "Frontend Development",
-          "type": "LABOR",
+          "type": "Labor",
           "quantity": 20,
           "rate": 50
         },
@@ -22,7 +22,7 @@
           "invoiceId": "1",
           "id": "102",
           "description": "Backend Development",
-          "type": "LABOR",
+          "type": "Labor",
           "quantity": 15,
           "rate": 60
         }
@@ -42,7 +42,7 @@
           "invoiceId": "2",
           "id": "201",
           "description": "Logo Design",
-          "type": "LABOR",
+          "type": "Labor",
           "quantity": 5,
           "rate": 75
         },
@@ -50,7 +50,7 @@
           "invoiceId": "2",
           "id": "202",
           "description": "Banner Design",
-          "type": "LABOR",
+          "type": "Labor",
           "quantity": 3,
           "rate": 80
         },
@@ -58,7 +58,7 @@
           "invoiceId": "2",
           "id": "203",
           "description": "Stock Photos",
-          "type": "MATERIAL",
+          "type": "Material",
           "quantity": 10,
           "rate": 10
         }
@@ -78,7 +78,7 @@
           "invoiceId": "3",
           "id": "301",
           "description": "Business Strategy",
-          "type": "LABOR",
+          "type": "Labor",
           "quantity": 8,
           "rate": 100
         }
@@ -100,7 +100,7 @@
           "invoiceId": "4",
           "id": "401",
           "description": "Prototype Design",
-          "type": "LABOR",
+          "type": "Labor",
           "quantity": 12,
           "rate": 90
         },
@@ -108,7 +108,7 @@
           "invoiceId": "4",
           "id": "402",
           "description": "Raw Materials",
-          "type": "MATERIAL",
+          "type": "Material",
           "quantity": 500,
           "rate": 2
         }
@@ -129,7 +129,7 @@
           "invoiceId": "5",
           "id": "501",
           "description": "Content Creation",
-          "type": "LABOR",
+          "type": "Labor",
           "quantity": 10,
           "rate": 40
         }

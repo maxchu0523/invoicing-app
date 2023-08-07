@@ -1,4 +1,4 @@
-import { Button, styled } from '@mui/material';
+import { Button, Typography, styled } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
@@ -13,7 +13,9 @@ function InvoiceControlBar() {
 
     return (
         <>
-
+            <Typography variant="h6" gutterBottom component="div">
+                Invoice Editing
+            </Typography>
             <ButtonWrapper>
                 <Link to="detail" >
                     <Button role="button" name="Create Invoice" variant="contained" color="primary">
