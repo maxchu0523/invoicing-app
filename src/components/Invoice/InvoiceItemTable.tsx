@@ -47,86 +47,97 @@ function AddInvoiceItem(addInvoiceItemProp: AddInvoiceItemProp) {
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        "& .MuiTextField-root": { m: 1, width: "25ch" },
-      }}
-      autoComplete="off"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <Typography variant="h6" gutterBottom component="div">
-        Add Invoice Item
-      </Typography>
-
-      <Controller
-        name="description"
-        control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <TextField
-            data-testid="invoice-item-description"
-            required
-            {...field}
-            label="Description"
+    <>
+      <Box sx={{ margin: 1 }}>
+        <Typography variant="h6" gutterBottom component="div">
+          Add Invoice Item
+        </Typography>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiFormControl-root": {
+              marginTop: 1,
+              marginBottom: 1,
+              marginRight: 2,
+            },
+            "& .MuiButtonBase-root ": {
+              marginTop: 1,
+              marginBottom: 1,
+              marginRight: 2,
+            },
+          }}
+          autoComplete="off"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Controller
+            name="description"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                data-testid="invoice-item-description"
+                required
+                {...field}
+                label="Description"
+              />
+            )}
           />
-        )}
-      />
 
-      <Controller
-        name="type"
-        control={control}
-        defaultValue={InvoiceItemType.LABOR} // Replace with your default value if needed
-        render={({ field }) => (
-          <FormControl required sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel>Type</InputLabel>
-            <Select {...field} label="Type">
-              <MenuItem value={InvoiceItemType.LABOR}>
-                {InvoiceItemType.LABOR}
-              </MenuItem>
-              <MenuItem value={InvoiceItemType.MATERIAL}>
-                {InvoiceItemType.MATERIAL}
-              </MenuItem>
-            </Select>
-          </FormControl>
-        )}
-      />
-
-      <Controller
-        name="quantity"
-        control={control}
-        render={({ field }) => (
-          <TextField
-            data-testid="quantity"
-            required
-            {...field}
-            label="Quantity"
-            type="number"
-            InputProps={{ inputProps: { min: 0 } }}
+          <Controller
+            name="type"
+            control={control}
+            defaultValue={InvoiceItemType.LABOR} // Replace with your default value if needed
+            render={({ field }) => (
+              <FormControl required sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel>Type</InputLabel>
+                <Select {...field} label="Type">
+                  <MenuItem value={InvoiceItemType.LABOR}>
+                    {InvoiceItemType.LABOR}
+                  </MenuItem>
+                  <MenuItem value={InvoiceItemType.MATERIAL}>
+                    {InvoiceItemType.MATERIAL}
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            )}
           />
-        )}
-      />
 
-      <Controller
-        name="rate"
-        control={control}
-        render={({ field }) => (
-          <TextField
-            data-testid="rate"
-            required
-            {...field}
-            label="Rate"
-            type="number"
-            InputProps={{ inputProps: { min: 0 } }}
+          <Controller
+            name="quantity"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                data-testid="quantity"
+                required
+                {...field}
+                label="Quantity"
+                type="number"
+                InputProps={{ inputProps: { min: 0 } }}
+              />
+            )}
           />
-        )}
-      />
 
-      <br></br>
-      <Button type="submit" variant="contained" color="primary">
-        Add
-      </Button>
-    </Box>
+          <Controller
+            name="rate"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                data-testid="rate"
+                required
+                {...field}
+                label="Rate"
+                type="number"
+                InputProps={{ inputProps: { min: 0 } }}
+              />
+            )}
+          />
+
+          <Button type="submit" variant="contained" color="primary">
+            Add
+          </Button>
+        </Box>
+      </Box>
+    </>
   );
 }
 

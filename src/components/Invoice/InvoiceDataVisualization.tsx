@@ -1,13 +1,36 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  Title,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+} from "chart.js";
+import { Doughnut, Line } from "react-chartjs-2";
 import { Invoice, InvoiceItemType } from "../../interface/IInvoice";
 import { Typography, styled } from "@mui/material";
 import {
   filterRequiredShippingInvoices,
+  getInvoicesAmountByMonthDistribution,
   getInvoicesDetailAmount,
 } from "../../services/InvoiceService";
 
-ChartJS.register(ArcElement, Tooltip, Legend, Title);
+ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
+  Title,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 interface InvoiceAmountTypeDoughnutChartProps {
   invoices: Invoice[];
@@ -37,7 +60,7 @@ export function InvoiceAmountTypeDoughnutChart(
     plugins: {
       title: {
         display: true,
-        text: "Distribution of Invoice Amount", // Your chart title goes here
+        text: "Distribution of invoice amount", // Your chart title goes here
       },
     },
   };
@@ -57,7 +80,6 @@ export function InvoiceShppingRequiredDoughnutChart(
   ).length;
   const countOfNoShippingRequiredInvoices =
     props.invoices.length - countOfShippingRequiredInvoices;
-  debugger;
   const data = {
     labels: ["Shipping", "No Shipping"],
     datasets: [
@@ -78,12 +100,68 @@ export function InvoiceShppingRequiredDoughnutChart(
     plugins: {
       title: {
         display: true,
-        text: "Distribution of Shipping required invoice", // Your chart title goes here
+        text: "Distribution of shipping required invoice", // Your chart title goes here
       },
     },
   };
 
   return <Doughnut data={data} options={chartOptions} />;
+}
+
+interface InvoiceAmountMonthLineChartProps {
+  invoices: Invoice[];
+}
+
+export function InvoiceAmountMonthLineChart(
+  props: InvoiceAmountMonthLineChartProps
+) {
+  const amountByMonth = getInvoicesAmountByMonthDistribution(props.invoices);
+  const invoiceDateAmountByMonth = amountByMonth.map(
+    (item) => item.invoiceDateAmount
+  );
+  const dueDateAmountByMonth = amountByMonth.map((item) => item.dueDateAmount);
+
+  const data = {
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    datasets: [
+      {
+        label: "Invoice Date",
+        data: invoiceDateAmountByMonth,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "Due Date",
+        data: dueDateAmountByMonth,
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
+
+  const chartOptions = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Distribution of invoice amount by month", // Your chart title goes here
+      },
+    },
+  };
+
+  return <Line data={data} options={chartOptions} />;
 }
 
 interface InvoiceDataVisualizationProps {
@@ -102,7 +180,7 @@ function InvoiceDataVisualization(props: InvoiceDataVisualizationProps) {
   return (
     <>
       <Typography variant="h6" gutterBottom component="div">
-        Invoice Data Summarization
+        Invoice Data Visualization
       </Typography>
       <InvoiceDataVisualizationWrapper>
         {props.invoices !== undefined && props.invoices.length > 0 && (
@@ -113,6 +191,9 @@ function InvoiceDataVisualization(props: InvoiceDataVisualizationProps) {
             <InvoiceShppingRequiredDoughnutChart
               invoices={props.invoices}
             ></InvoiceShppingRequiredDoughnutChart>
+            <InvoiceAmountMonthLineChart
+              invoices={props.invoices}
+            ></InvoiceAmountMonthLineChart>
           </>
         )}
       </InvoiceDataVisualizationWrapper>

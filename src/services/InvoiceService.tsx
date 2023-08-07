@@ -82,3 +82,47 @@ export function filterRequiredShippingInvoices(invoices: Invoice[]): Invoice[] {
       invoice.shippingAddress !== null
   );
 }
+
+interface InvoicesAmountByMonthDistribution {
+  month: string;
+  invoiceDateAmount: number;
+  dueDateAmount: number;
+}
+
+export function getInvoicesAmountByMonthDistribution(
+  invoices: Invoice[]
+): InvoicesAmountByMonthDistribution[] {
+  const months: string[] = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  let invoicesAmountByMonthDistribution: InvoicesAmountByMonthDistribution[] =
+    months.map((month) => ({
+      month,
+      invoiceDateAmount: 0,
+      dueDateAmount: 0,
+    }));
+
+  // use date month as index for quick access
+  invoices.forEach((invoice) => {
+    invoicesAmountByMonthDistribution[
+      new Date(invoice.invoiceDate).getMonth()
+    ].invoiceDateAmount += getInvoiceAmount(invoice);
+    invoicesAmountByMonthDistribution[
+      new Date(invoice.dueDate).getMonth()
+    ].dueDateAmount += getInvoiceAmount(invoice);
+  });
+
+  return invoicesAmountByMonthDistribution;
+}

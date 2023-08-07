@@ -9,14 +9,14 @@ Follow these steps to run the application:
 3. Install dependencies: `npm install`.
 4. Run the mock backend server: `npm run mock-api`.
 5. Run the application: `npm run dev`.
-6. Open your web browser and visit `http://localhost:5173/` to access the application.
+6. Open your web browser and visit `http://localhost:5173/invoice` to access the application.
 7. Run Test case: `npm run test`.
 
 ## Development Process and Approach
 
 1. Requirement Analysis, UI Design and data structures design: 1 hour
 2. Tool Selection and Project Setup: 1.5 hours
-3. Development: implemented features, components, and logic: 6 hours
+3. Development: implemented features, components, and logic: 9 hours
 4. Testing: Wrote Testcases & Conducted Manual Testing: 0.5 hour
 
 Given more time, I would have focused on:
@@ -38,6 +38,7 @@ I might have also invested more time in:
 - Vite: Provides faster server start time.
 - ESLint: A linting tool to avoid potential bugs.
 - Material UI: A powerful UI library that's suitable for building applications quickly.
+- React-chartjs-2: UI library for building charts using Chart.js within React.
 - React Hook Form: Used to build forms in React. Reduced code needed to handle form and reduce unnecessary re-renders.
 - React Router: Used for page routing.
 - Axios: Utilized for making API calls.
@@ -46,11 +47,14 @@ I might have also invested more time in:
 - Visual Studio Code: Chosen as the familiar code editor.
 - ChatGPT + Copilot: Used to save time on redundant tasks.
 
-## Relevant Logic in the Code
+## Extra functionalities
+**Invoice Data Visualization** component for visualiaze invoice-related information. This includes two doughnut charts illustrating the distribution of invoice item types and invoices requiring shipment. A line chart to depict the distribution of invoice amounts over months based on both invoice date and due date.
 
+## Relevant File/Logic in the Code
+- [Invoice Data Visualization](./src/components/Invoice/InvoiceDataVisualization.tsx): An invoice data visualization component, comprising multiple charts built using React-chartjs-2.
+- [Invoice Service](./src/services/InvoiceService.tsx): A service file that provides reusable services related to invoices. Also prepare summarized data for visualization component to display, such as invoices amount by month.
 - [Invoice Item Table](./src/components/Invoice/InvoiceItemTable.tsx): A reusable invoice item table, used in InvoiceTable and Invoice Detail. The setInvoiceItems setter enables rendering UI for adding invoice items.
 - [Invoice Interface](./src/interface/IInvoice.tsx): This interface file and shared variable file define the data structure for storing invoices and invoice items. They are referenced in every invoice-related file to ensure strict typing.
-- [Invoice Service](./src/services/InvoiceService.tsx): A service file that provides reusable services related to invoices.
 
 ## Design Decisions and Assumptions
 

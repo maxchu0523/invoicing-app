@@ -7,8 +7,8 @@
       "customerName": "ABC Corp",
       "billingAddress": "abc@example.com",
       "notes": "Please make payment by the due date.",
-      "invoiceDate": "2023-08-01T00:00:00Z",
-      "dueDate": "2023-08-15T00:00:00Z",
+      "invoiceDate": "2023-01-05T00:00:00Z",
+      "dueDate": "2023-03-15T00:00:00Z",
       "invoiceItems": [
         {
           "invoiceId": "1",
@@ -35,8 +35,8 @@
       "description": "Graphic Design Services",
       "customerName": "XYZ Ltd",
       "billingAddress": "xyz@example.com",
-      "invoiceDate": "2023-08-05T00:00:00Z",
-      "dueDate": "2023-08-20T00:00:00Z",
+      "invoiceDate": "2023-04-05T00:00:00Z",
+      "dueDate": "2023-06-20T00:00:00Z",
       "invoiceItems": [
         {
           "invoiceId": "2",
@@ -71,8 +71,8 @@
       "description": "Consulting Services",
       "customerName": "123 Corp",
       "billingAddress": "123@example.com",
-      "invoiceDate": "2023-08-10T00:00:00Z",
-      "dueDate": "2023-08-25T00:00:00Z",
+      "invoiceDate": "2023-05-10T00:00:00Z",
+      "dueDate": "2023-06-25T00:00:00Z",
       "invoiceItems": [
         {
           "invoiceId": "3",
@@ -94,7 +94,7 @@
       "shippingAddress": "15760 Rue Notre-Dame Est",
       "notes": "Thank you for your business!",
       "invoiceDate": "2023-08-15T00:00:00Z",
-      "dueDate": "2023-08-30T00:00:00Z",
+      "dueDate": "2023-11-30T00:00:00Z",
       "invoiceItems": [
         {
           "invoiceId": "4",

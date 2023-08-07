@@ -50,6 +50,7 @@ function InvoiceDetail() {
 
   const InvoiceDetailWrapper = styled("div")(({ theme }) => ({
     display: "flex",
+    gap: "3rem",
   }));
 
   const InvoiceFormWrapper = styled("div")(({ theme }) => ({
@@ -62,183 +63,191 @@ function InvoiceDetail() {
 
   return (
     <>
-      <Typography variant="h1" gutterBottom>
-        Invoice
-      </Typography>
+      <Box sx={{ margin: 1 }}>
+        <Typography variant="h1" gutterBottom>
+          Invoice
+        </Typography>
 
-      <InvoiceDetailWrapper>
-        <InvoiceFormWrapper>
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": { m: 1, width: "25ch" },
-            }}
-            autoComplete="off"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <Typography variant="h6" gutterBottom component="div">
-              Create Invoice
-            </Typography>
-            <Controller
-              name="invoiceNumber"
-              control={control}
-              defaultValue={invoice.invoiceNumber}
-              render={({ field }) => (
-                <TextField
-                  required
-                  label="Invoice #"
-                  data-testid="invoice-number"
-                  {...field}
-                />
-              )}
-            />
+        <InvoiceDetailWrapper>
+          <InvoiceFormWrapper>
+            <Box
+              component="form"
+              sx={{
+                "& .MuiFormControl-root": {
+                  marginTop: 1,
+                  marginBottom: 1,
+                  marginRight: 2,
+                },
+                "& .MuiButtonBase-root ": {
+                  marginTop: 1,
+                  marginBottom: 1,
+                  marginRight: 2,
+                },
+              }}
+              autoComplete="off"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <Typography variant="h6" gutterBottom component="div">
+                Create Invoice
+              </Typography>
+              <Controller
+                name="invoiceNumber"
+                control={control}
+                defaultValue={invoice.invoiceNumber}
+                render={({ field }) => (
+                  <TextField
+                    required
+                    label="Invoice #"
+                    data-testid="invoice-number"
+                    {...field}
+                  />
+                )}
+              />
 
-            <Controller
-              name="description"
-              control={control}
-              defaultValue={invoice.description}
-              render={({ field }) => (
-                <TextField
-                  required
-                  label="Description"
-                  data-testid="description"
-                  {...field}
-                  fullWidth
-                />
-              )}
-            />
+              <Controller
+                name="description"
+                control={control}
+                defaultValue={invoice.description}
+                render={({ field }) => (
+                  <TextField
+                    required
+                    label="Description"
+                    data-testid="description"
+                    {...field}
+                  />
+                )}
+              />
 
-            <br></br>
+              <br></br>
 
-            <Controller
-              name="notes"
-              control={control}
-              defaultValue={invoice.notes}
-              render={({ field }) => (
-                <TextField
-                  label="Notes"
-                  {...field}
-                  rows={8}
-                  data-testid="notes"
-                  multiline
-                  fullWidth
-                />
-              )}
-            />
+              <Controller
+                name="notes"
+                control={control}
+                defaultValue={invoice.notes}
+                render={({ field }) => (
+                  <TextField
+                    label="Notes"
+                    {...field}
+                    rows={8}
+                    data-testid="notes"
+                    multiline
+                    fullWidth
+                  />
+                )}
+              />
 
-            <br></br>
+              <br></br>
 
-            <Controller
-              name="customerName"
-              control={control}
-              defaultValue={invoice.customerName}
-              render={({ field }) => (
-                <TextField
-                  required
-                  label="Customer Name"
-                  {...field}
-                  data-testid="customer-name"
-                />
-              )}
-            />
+              <Controller
+                name="customerName"
+                control={control}
+                defaultValue={invoice.customerName}
+                render={({ field }) => (
+                  <TextField
+                    required
+                    label="Customer Name"
+                    {...field}
+                    data-testid="customer-name"
+                  />
+                )}
+              />
 
-            <Controller
-              name="billingAddress"
-              control={control}
-              defaultValue={invoice.billingAddress}
-              render={({ field }) => (
-                <TextField
-                  required
-                  label="Billing Address"
-                  {...field}
-                  data-testid="billing-address"
-                />
-              )}
-            />
+              <Controller
+                name="billingAddress"
+                control={control}
+                defaultValue={invoice.billingAddress}
+                render={({ field }) => (
+                  <TextField
+                    required
+                    label="Billing Address"
+                    {...field}
+                    data-testid="billing-address"
+                  />
+                )}
+              />
 
-            <Controller
-              name="shippingAddress"
-              control={control}
-              defaultValue={invoice.shippingAddress}
-              render={({ field }) => (
-                <TextField
-                  label="Shipping Address"
-                  {...field}
-                  data-testid="shipping-address"
-                />
-              )}
-            />
+              <Controller
+                name="shippingAddress"
+                control={control}
+                defaultValue={invoice.shippingAddress}
+                render={({ field }) => (
+                  <TextField
+                    label="Shipping Address"
+                    {...field}
+                    data-testid="shipping-address"
+                  />
+                )}
+              />
 
-            <br></br>
+              <Controller
+                name="invoiceDate"
+                control={control}
+                defaultValue={invoice.invoiceDate}
+                render={({ field }) => (
+                  <DatePicker
+                    label="Invoice Date"
+                    value={dayjs(field.value)}
+                    onChange={(date) => field.onChange(date)}
+                  />
+                )}
+              />
 
-            <Controller
-              name="invoiceDate"
-              control={control}
-              defaultValue={invoice.invoiceDate}
-              render={({ field }) => (
-                <DatePicker
-                  label="Invoice Date"
-                  value={dayjs(field.value)}
-                  onChange={(date) => field.onChange(date)}
-                />
-              )}
-            />
+              <Controller
+                name="dueDate"
+                control={control}
+                defaultValue={invoice.dueDate}
+                render={({ field }) => (
+                  <DatePicker
+                    label="Due Date"
+                    value={dayjs(field.value)}
+                    onChange={(date) => field.onChange(date)}
+                  />
+                )}
+              />
 
-            <Controller
-              name="dueDate"
-              control={control}
-              defaultValue={invoice.dueDate}
-              render={({ field }) => (
-                <DatePicker
-                  label="Due Date"
-                  value={dayjs(field.value)}
-                  onChange={(date) => field.onChange(date)}
-                />
-              )}
-            />
+              <Controller
+                name="status"
+                control={control}
+                render={({ field }) => (
+                  <FormControl sx={{ minWidth: 120 }} size="small" required>
+                    <InputLabel>Status</InputLabel>
+                    <Select {...field} label="Status">
+                      <MenuItem value={InvoiceStatus.DRAFT}>
+                        {InvoiceStatus.DRAFT}
+                      </MenuItem>
+                      <MenuItem value={InvoiceStatus.SENT}>
+                        {InvoiceStatus.SENT}
+                      </MenuItem>
+                      <MenuItem value={InvoiceStatus.OUTSTANDING}>
+                        {InvoiceStatus.OUTSTANDING}
+                      </MenuItem>
+                      <MenuItem value={InvoiceStatus.PAID}>
+                        {InvoiceStatus.PAID}
+                      </MenuItem>
+                      <MenuItem value={InvoiceStatus.CANCELLED}>
+                        {InvoiceStatus.CANCELLED}
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                )}
+              />
 
-            <Controller
-              name="status"
-              control={control}
-              render={({ field }) => (
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small" required>
-                  <InputLabel>Status</InputLabel>
-                  <Select {...field} label="Status">
-                    <MenuItem value={InvoiceStatus.DRAFT}>
-                      {InvoiceStatus.DRAFT}
-                    </MenuItem>
-                    <MenuItem value={InvoiceStatus.SENT}>
-                      {InvoiceStatus.SENT}
-                    </MenuItem>
-                    <MenuItem value={InvoiceStatus.OUTSTANDING}>
-                      {InvoiceStatus.OUTSTANDING}
-                    </MenuItem>
-                    <MenuItem value={InvoiceStatus.PAID}>
-                      {InvoiceStatus.PAID}
-                    </MenuItem>
-                    <MenuItem value={InvoiceStatus.CANCELLED}>
-                      {InvoiceStatus.CANCELLED}
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-              )}
-            />
+              <br></br>
+              <Button type="submit" variant="contained" color="primary">
+                Save
+              </Button>
+            </Box>
+          </InvoiceFormWrapper>
 
-            <br></br>
-            <Button type="submit" variant="contained" color="primary">
-              Save
-            </Button>
-          </Box>
-        </InvoiceFormWrapper>
-
-        <InvoiceItemWrapper>
-          <InvoiceItemTable
-            invoiceItems={invoiceItems}
-            setInvoiceItems={setInvoiceItems}
-            invoiceId={invoice.id}
-          ></InvoiceItemTable>
-        </InvoiceItemWrapper>
-      </InvoiceDetailWrapper>
+          <InvoiceItemWrapper>
+            <InvoiceItemTable
+              invoiceItems={invoiceItems}
+              setInvoiceItems={setInvoiceItems}
+              invoiceId={invoice.id}
+            ></InvoiceItemTable>
+          </InvoiceItemWrapper>
+        </InvoiceDetailWrapper>
+      </Box>
     </>
   );
 }
