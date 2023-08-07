@@ -29,7 +29,9 @@ const router = createBrowserRouter([
     path: "/invoice/email/:id",
     element: <InvoiceEmail></InvoiceEmail>,
   },
-]);
+], {
+  basename: "/",
+});
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -37,6 +39,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <RouterProvider router={router} />
     </LocalizationProvider>
-
   </React.StrictMode>,
 )

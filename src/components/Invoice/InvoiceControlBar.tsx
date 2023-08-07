@@ -16,7 +16,7 @@ function InvoiceControlBar() {
 
             <ButtonWrapper>
                 <Link to="detail" >
-                    <Button variant="contained" color="primary">
+                    <Button role="button" name="Create Invoice" variant="contained" color="primary">
                         Create Invoice
                     </Button>
                 </Link>

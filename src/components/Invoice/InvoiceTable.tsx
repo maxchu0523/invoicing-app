@@ -13,15 +13,34 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { styled } from '@mui/material/styles';
 import { getInvoices } from '../../api';
 import { useEffect, useState } from 'react';
-import { Invoice } from './IInvoice';
+import { Invoice, InvoiceStatus } from '../../interface/IInvoice';
 import InvoiceItemTable from './InvoiceItemTable';
-import { getInvoiceAmount } from './InvoiceService';
+import { getInvoiceAmount } from '../../services/InvoiceService';
 import InvoiceEmail from './InvoiceEmail';
 
 
 function Row(props: { invoice: Invoice }) {
     const invoice = props.invoice;
     const [open, setOpen] = useState(false);
+
+
+    function statusColor(status: string) {
+        switch (status) {
+            case InvoiceStatus.PAID:
+                return '#00e676'; 
+            case InvoiceStatus.SENT:
+                return '#ffee33';
+            case InvoiceStatus.DRAFT:
+                return '#fbc02d';
+            case InvoiceStatus.OUTSTANDING:
+                return '#ff6333';
+            case InvoiceStatus.CANCELLED:
+                return '#fbc02d';
+            default:
+                return '#ff3d00';
+        }
+    }
+    
 
     return (
         <React.Fragment>
@@ -42,9 +61,9 @@ function Row(props: { invoice: Invoice }) {
                 <TableCell align="left">{invoice.customerName}</TableCell>
                 <TableCell align="left">{invoice.shippingAddress}</TableCell>
                 <TableCell align="left">{invoice.billingAddress}</TableCell>
-                <TableCell align="left">{invoice.invoiceDate.toString()}</TableCell>
-                <TableCell align="left">{invoice.dueDate.toString()}</TableCell>
-                <TableCell align="left">{invoice.status}</TableCell>
+                <TableCell align="left">{new Date(invoice.invoiceDate).toDateString()}</TableCell>
+                <TableCell align="left">{new Date(invoice.dueDate).toDateString()}</TableCell>
+                <TableCell align="left" style={{backgroundColor:statusColor(invoice.status), color: 'white',}} >{invoice.status}</TableCell>
                 <TableCell align="right">{getInvoiceAmount(invoice)}</TableCell>
                 <TableCell align="center"><InvoiceEmail invoice={invoice}></InvoiceEmail></TableCell>
             </TableRow>

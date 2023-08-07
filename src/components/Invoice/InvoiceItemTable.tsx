@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, Input, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, styled, tableCellClasses } from '@mui/material';
-import { InvoiceItem, InvoiceItemType } from './IInvoice';
+import { InvoiceItem, InvoiceItemType } from '../../interface/IInvoice';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react';
@@ -44,7 +44,7 @@ function AddInvoiceItem(addInvoiceItemProp: AddInvoiceItemProp) {
                 name="description"
                 control={control}
                 defaultValue=""
-                render={({ field }) => <TextField required {...field} label="Description" />}
+                render={({ field }) => <TextField data-testid="invoice-item-description" required {...field} label="Description" />}
             />
 
             <Controller
@@ -65,18 +65,18 @@ function AddInvoiceItem(addInvoiceItemProp: AddInvoiceItemProp) {
             <Controller
                 name="quantity"
                 control={control}
-                render={({ field }) => <TextField required {...field} label="Quantity" type="number" />}
+                render={({ field }) => <TextField  data-testid="quantity" required {...field} label="Quantity" type="number" InputProps={{ inputProps: { min: 0} }}/>}
             />
 
             <Controller
                 name="rate"
                 control={control}
-                render={({ field }) => <TextField required {...field} label="Rate" type="number" />}
+                render={({ field }) => <TextField data-testid="rate" required {...field} label="Rate" type="number" InputProps={{ inputProps: { min: 0} }}/>}
             />
 
             <br></br>
             <Button type="submit" variant="contained" color="primary">
-                Add Invoice Item
+                Add
             </Button>
         </Box>
     );

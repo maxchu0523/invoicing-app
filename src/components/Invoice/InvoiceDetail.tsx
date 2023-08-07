@@ -3,12 +3,12 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography, styled } from "@mui/material"
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { Invoice, InvoiceItem, InvoiceItemType, InvoiceStatus } from "./IInvoice";
+import { Invoice, InvoiceItem, InvoiceStatus } from "../../interface/IInvoice";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useEffect, useState } from "react";
 import dayjs from 'dayjs';
 import InvoiceItemTable from "./InvoiceItemTable";
-import { getEmptyInvoice } from "./InvoiceService";
+import { getEmptyInvoice } from "../../services/InvoiceService";
 import { postInvoice } from "../../api";
 
 function InvoiceDetail() {
@@ -89,7 +89,7 @@ function InvoiceDetail() {
                             control={control}
                             defaultValue={invoice.invoiceNumber}
                             render={({ field }) => (
-                                <TextField required label="Invoice #" {...field} />
+                                <TextField required label="Invoice #" data-testid="invoice-number" {...field} />
                             )}
                         />
 
@@ -98,7 +98,7 @@ function InvoiceDetail() {
                             control={control}
                             defaultValue={invoice.description}
                             render={({ field }) => (
-                                <TextField required label="Description" {...field} fullWidth />
+                                <TextField required label="Description" data-testid="description" {...field} fullWidth />
                             )}
                         />
 
@@ -109,7 +109,7 @@ function InvoiceDetail() {
                             control={control}
                             defaultValue={invoice.notes}
                             render={({ field }) => (
-                                <TextField label="Notes" {...field} rows={8} />
+                                <TextField label="Notes" {...field}  rows={8} data-testid="notes" multiline fullWidth />
                             )}
                         />
 
@@ -121,7 +121,7 @@ function InvoiceDetail() {
                             control={control}
                             defaultValue={invoice.customerName}
                             render={({ field }) => (
-                                <TextField required label="Customer Name" {...field} />
+                                <TextField required label="Customer Name" {...field} data-testid="customer-name" />
                             )}
                         />
 
@@ -131,7 +131,7 @@ function InvoiceDetail() {
                             control={control}
                             defaultValue={invoice.billingAddress}
                             render={({ field }) => (
-                                <TextField required label="Billing Address" {...field} />
+                                <TextField required label="Billing Address" {...field} data-testid="billing-address" />
                             )}
                         />
 
@@ -141,7 +141,7 @@ function InvoiceDetail() {
                             control={control}
                             defaultValue={invoice.shippingAddress}
                             render={({ field }) => (
-                                <TextField label="Shipping Address" {...field} />
+                                <TextField label="Shipping Address" {...field} data-testid="shipping-address" />
                             )}
                         />
 

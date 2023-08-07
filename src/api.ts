@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Invoice } from "./components/Invoice/IInvoice";
+import { Invoice } from "./interface/IInvoice";
 
 const domain = "http://localhost:3000/"
 

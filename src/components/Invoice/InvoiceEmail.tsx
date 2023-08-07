@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Invoice } from './IInvoice';
+import { Invoice } from '../../interface/IInvoice';
 import { useParams } from 'react-router-dom';
 import { getInvoice } from '../../api';
-import { getInvoiceAmount } from './InvoiceService';
+import { getInvoiceAmount } from '../../services/InvoiceService';
 import { Button } from '@mui/material';
 
 interface InvoiceEmailProps {
