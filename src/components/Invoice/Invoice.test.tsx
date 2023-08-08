@@ -56,10 +56,18 @@ test("create new invoice", async () => {
   });
 
   test("should have new created invoice", async () => {
+    const user = userEvent.setup();
+
+    // TODO replace render with page change and verfiy the invoice is created
     await renderInvoice();
     expect(screen.getByText("test invoiceNumber")).toBeInTheDocument();
     expect(screen.getByText("test description")).toBeInTheDocument();
     expect(screen.getByText("test notes")).toBeInTheDocument();
     expect(screen.getByText("test customerName")).toBeInTheDocument();
+    
+    await user.click(screen.getByRole("collapse-invoice-item"));
+    expect(screen.getByText("20")).toBeInTheDocument();
+    expect(screen.getByText("30")).toBeInTheDocument();
+
   });
 });
