@@ -21,7 +21,7 @@ Follow these steps to run the application:
 Given more time, I would have focus on:
 - Implementing an in-grid edit function in the invoice item table, allowing users to update invoice items.
 - Creating a function to generate an invoice PDF/Word document and send it via email.
-- Implementing view and delete invoice functions.
+- Implementing view and delete invoice functions. Due to the potential length of notes, displaying them in a table might not be ideal. Creating a separate "View Invoice" page would allow for the presentation of invoice notes and the potential inclusion of additional fields in the future.
 - Designing a home page for users to navigate to other modules, such as the invoice section.
 
 I might have also invest more time in:
