@@ -33,7 +33,7 @@ I might have also invest more time in:
 ## Frameworks/Libraries/Tools I Chose
 
 
-- TypeScript: Offers benefits such as static typing compared to JavaScript.
+- TypeScript: Offers benefits such as static typing compare to JavaScript.
 - React: My most familiar frontend framework (technically a library).
 - Vite: Provides faster server start time.
 - ESLint: A linting tool to avoid potential bugs.
@@ -42,7 +42,7 @@ I might have also invest more time in:
 - React Hook Form: Used to build forms in React. Reduced code needed to handle form and reduce unnecessary re-renders.
 - React Router: Used for page routing.
 - Axios: Utilized for making API calls.
-- Vite + React Testing Library: Works seamlessly with Vite for testing.
+- Vitest + React Testing Library: Works seamlessly with Vite for testing.
 - JSON Server: Used for local mock backend server.
 - Visual Studio Code: Chosen as the familiar code editor.
 - ChatGPT + Copilot: Used to save time on redundant tasks.

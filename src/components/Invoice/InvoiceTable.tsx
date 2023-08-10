@@ -36,7 +36,7 @@ function Row(props: { invoice: Invoice }) {
       case InvoiceStatus.OUTSTANDING:
         return "#ff6333";
       case InvoiceStatus.CANCELLED:
-        return "#fbc02d";
+        return "#818589";
       default:
         return "#ff3d00";
     }

@@ -116,9 +116,7 @@ export function InvoiceAmountMonthLineChart(
   props: InvoiceAmountMonthLineChartProps
 ) {
   const amountByMonth = getInvoicesAmountByMonthDistribution(props.invoices);
-  const invoiceDateAmountByMonth = amountByMonth.map(
-    (item) => item.invoiceDateAmount
-  );
+  const invoiceDateAmountByMonth = amountByMonth.map((item) => item.invoiceDateAmount);
   const dueDateAmountByMonth = amountByMonth.map((item) => item.dueDateAmount);
 
   const data = {
